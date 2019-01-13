@@ -23,7 +23,7 @@ def infix_to_postfix(infix_expr):
                 postfix_list.append(top_token)
                 top_token = op_stack.pop()
         else:
-            while (not op_stack.is_empty() and prec[op_stack.peek()] >= prec[token]):
+            while (not op_stack.is_empty()) and (prec[op_stack.peek()] >= prec[token]):
                 postfix_list.append(op_stack.pop())
             op_stack.push(token)
 
@@ -61,6 +61,7 @@ def do_math(op, op1, op2):
 
 print(infix_to_postfix("A * B + C * D"))
 print(infix_to_postfix("( A + B ) * C - ( D - E ) * ( F + G )"))
-
 result = postfix_eval('7 8 + 3 2 + /')
 print(result)
+
+print(infix_to_postfix("A + B * C / ( D - E )"))
