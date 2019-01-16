@@ -22,3 +22,14 @@ class UnorderedList:
             current = current.get_next()
 
         return count
+
+    def search(self, value):
+        current = self.head
+        found = False
+
+        while current != None and not found:
+            if current.get_data() == value:
+                found = True
+            current = current.get_next()
+
+        return found

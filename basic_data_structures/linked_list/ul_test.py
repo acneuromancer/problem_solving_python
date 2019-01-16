@@ -4,5 +4,6 @@ l = UnorderedList()
 
 for i in range(10):
     l.add(i)
-    
-print(l.size())
+
+print(l.search(-10))
+print(l.search(5))
