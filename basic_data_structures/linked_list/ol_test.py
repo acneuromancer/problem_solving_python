@@ -14,10 +14,15 @@ ol = OrderedList()
 for i in range(10, 0, -1):
     ol.add(i)
 
+ol.add(0)
 print_list(ol)
 
-ol.add(-1000)
+print('Size of the list: %d' % ol.size())
+
+print('Removing 5 from the list: %s' % ol.remove(5))
 print_list(ol)
 
-ol2 = OrderedList()
-print(ol2)
+for i in range(-1, 12):
+    print('Is %d in the list? %s' % (i, ol.search(i)))
+
+print('Is 300 in the list? %s' % ol.search(300))
