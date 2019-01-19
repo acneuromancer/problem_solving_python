@@ -8,4 +8,4 @@ def move_disk(fp, tp):
     print("Moving disk from", fp, "to", tp)
 
 
-move_tower(3, "A", "B", "C")
+move_tower(6, "A", "B", "C")
