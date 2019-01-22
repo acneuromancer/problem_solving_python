@@ -1,8 +1,11 @@
 def quick_sort(numbers):
-    pass
+    quick_sort_helper(numbers, 0, len(numbers)-1)
 
 def quick_sort_helper(numbers, first, last):
-    pass
+    if first < last:
+        split_point = partition(numbers, first, last)
+        quick_sort_helper(numbers, first, split_point-1)
+        quick_sort_helper(numbers, split_point+1, last)
 
 def partition(numbers, first, last):
     pivot_value = numbers[first]
@@ -13,7 +16,7 @@ def partition(numbers, first, last):
     while not done:
         while left_mark <= right_mark and numbers[left_mark] <= pivot_value:
             left_mark += 1
-        while numbers[right_mark] >= pivot_value and right_mark >= left_mark:
+        while right_mark >= left_mark and numbers[right_mark] >= pivot_value:
             right_mark -= 1
         if right_mark < left_mark:
             done = True
@@ -23,3 +26,8 @@ def partition(numbers, first, last):
     numbers[first], numbers[right_mark] = numbers[right_mark], numbers[first]
 
     return right_mark
+
+
+numbers = [3000, 0, -1, 25, 10, 8]
+quick_sort(numbers)
+print(numbers)
