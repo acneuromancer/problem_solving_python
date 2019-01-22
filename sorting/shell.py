@@ -6,13 +6,10 @@ def shell_sort(numbers):
         for i in range (gap, n):
             temp = numbers[i]
             j = i
-
             while j >= gap and numbers[j-gap] > temp:
                 numbers[j] = numbers[j-gap]
                 j -= gap
-
             numbers[j] = temp
-
         gap //= 2
 
 
