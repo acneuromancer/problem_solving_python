@@ -28,10 +28,7 @@ class Trie:
 
         temp_trie = self.trie
         for letter in word:
-            if letter in temp_trie:
-                temp_trie = temp_trie[letter]
-            else:
-                temp_trie = temp_trie.setdefault(letter, {})
+            temp_trie = temp_trie.setdefault(letter, {})
 
         temp_trie[self._end] = self._end
 
