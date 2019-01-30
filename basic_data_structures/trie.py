@@ -21,6 +21,16 @@ class Trie:
             return self._end in sub_trie
 
 
+    def make_tree(self, *words):
+        for word in words:
+            temp_trie = self.trie
+
+            for letter in word:
+                temp_trie = temp_trie.setdefault(letter, {})
+
+            temp_trie[self._end] = self._end
+
+
     def add_word(self, word):
         if self.find_word(word):
             print('Word already exists.')
@@ -51,8 +61,8 @@ class Trie:
 
 
 t = Trie()
-t.add_word('ball')
-t.add_word('ballet')
+t.make_tree('ball', 'ballet')
+
 print(t.__repr__())
 print(t.find_word('ball'))
 print(t.find_word('bat'))
