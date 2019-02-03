@@ -17,4 +17,4 @@ def base_converter(dec_number, base):
 
     return new_string
 
-print(base_converter(255, 16))
+print(base_converter(65535, 16))
