@@ -1,3 +1,5 @@
+import operator
+
 class Stack:
 
     def __init__(self):
@@ -109,8 +111,27 @@ def build_parse_tree(fp_exp):
     return e_tree
 
 
+def evaluate(parse_tree):
+    opers = {
+        '+' : operator.add,
+        '-' : operator.sub,
+        '*' : operator.mul,
+        '/' : operator.truediv
+    }
+
+    left = parse_tree.get_left_child()
+    right = parse_tree.get_right_child()
+
+    if left and right:
+        fn = opers[parse_tree.get_root_val()]
+        return fn(evaluate(left), evaluate(right))
+    else:
+        return parse_tree.get_root_val()
+
+
 pt = build_parse_tree("( ( 10 + 5 ) * 3 )")
 pt.postorder()
 print()
+
 pt = build_parse_tree("( 3 + ( 4 * 5 ) )")
-pt.preorder()
+print(evaluate(pt))
