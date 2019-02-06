@@ -1,4 +1,7 @@
 from TreeNode import TreeNode
+from BinarySearchTree import BinarySearchTree
 
-tn = TreeNode(1, 10)
-print("%d %d" % (tn.key, tn.payload))
+bst = BinarySearchTree()
+bst.put(10, 'A')
+bst.put(1, 'B')
+bst.put(11, 'C')
