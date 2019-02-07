@@ -62,3 +62,40 @@ class BinarySearchTree:
             return True
         else:
             return False
+
+    def delete(self, key):
+        if self.size > 1:
+            node_to_remove = self._get(key, self.root)
+            if node_to_remove:
+                self.remove(node_to_remove)
+                self.size -= 1
+            else:
+                raise KeyError('Error, key not in tree')
+        elif self.size == 1 and self.root.key == key:
+            self.root = None
+            self.size -= 1
+        else:
+            raise KeyError('Error, key not in tree')
+
+    def __delitem__(self, key):
+        self.delete(key)
+
+    def splice_out(self):
+        if self.is_leaf():
+            if self.is_left_child():
+                self.parent.left_child = None
+            else:
+                self.parent.right_child = None
+        elif self.has_any_children():
+            if self.has_left_child():
+                if self.is_left_child():
+                    self.parent.left_child = self.left_child
+                else:
+                    self.parent.right_child = self.left_child
+                self.left_child.parent = self.parent
+            else:
+                if self.is_left_child():
+                    self.parent.left_child = self.right_child
+                else:
+                    self.parent.right_child = self.right_child
+                self.right_child.parent = self.parent
