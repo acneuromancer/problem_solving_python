@@ -11,6 +11,3 @@ print(bst.get(10))
 print(bst[11])
 print(bst.get(-1))
 print(10 in bst)
-
-bst["A"] = 20
-print(bst["A"])
