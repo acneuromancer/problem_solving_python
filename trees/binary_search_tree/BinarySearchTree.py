@@ -12,16 +12,6 @@ class BinarySearchTree:
     def __len__(self):
         return self.size
 
-    def __iter__(self):
-        if self:
-            if self.has_left_child():
-                for elem in self.left_child:
-                    yield elem
-            yield self.key
-            if self.has_right_child():
-                for elem in self.right_child:
-                    yield elem
-
     def put(self, key, val):
         if self.root:
             self._put(key, val, self.root)

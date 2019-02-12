@@ -40,3 +40,13 @@ class TreeNode:
             self.left_child.parent = self
         if self.has_right_child():
             self.right_child.parent = self
+
+    def __iter__(self):
+        if self:
+            if self.has_left_child():
+                for elem in self.left_child:
+                    yield elem
+            yield self.key
+            if self.has_right_child():
+                for elem in self.right_child:
+                    yield elem
