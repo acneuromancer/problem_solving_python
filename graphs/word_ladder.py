@@ -25,4 +25,8 @@ def buildGraph(wordFile):
     return g
 
 
+def bfs(g, start):
+    pass
+
+
 buildGraph('words.txt')
