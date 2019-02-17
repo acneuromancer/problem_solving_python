@@ -14,8 +14,32 @@ class Vertex:
     def addNeighbour(self, nbr, weight = 0):
         self.connectedTo[nbr] = weight
 
-    def __str__(self):
-        return str(self.id) + ' connected to ' + str([x.id for x in self.connectedTo])
+    def setColor(self, color):
+        self.color = color
+
+    def setDistance(self, d):
+        self.dist = d
+
+    def setPred(self, p):
+        self.pred = p
+
+    def setDiscovery(self, dtime):
+        self.disc = dtime
+
+    def setFinish(self, ftime):
+        self.fin = ftime
+
+    def getFinish(self):
+        return self.fin
+
+    def getPred(self):
+        return self.pred
+
+    def getDistance(self):
+        return self.dist
+
+    def getColor(self):
+        return self.color
 
     def getConnections(self):
         return self.connectedTo.keys()
@@ -25,6 +49,10 @@ class Vertex:
 
     def getWeight(self, nbr):
         return self.connectedTo[nbr]
+
+    def __str__(self):
+        return str(self.id) + ' connected to ' + str([x.id for x in self.connectedTo])
+
 
 class Graph:
 
