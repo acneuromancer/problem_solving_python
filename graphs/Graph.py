@@ -1,8 +1,15 @@
+import sys
+
 class Vertex:
-    
+
     def __init__(self, key):
         self.id = key
         self.connectedTo = {}
+        self.colort = 'white'
+        self.dist = sys.maxsize
+        self.pred = None
+        self.disc = 0
+        self.fin = 0
 
     def addNeighbour(self, nbr, weight = 0):
         self.connectedTo[nbr] = weight
