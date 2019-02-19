@@ -1,9 +1,7 @@
 from collections import defaultdict
+from collections import deque
 from itertools import product
-import os
-
-from Graph import Graph
-from Graph import Queue
+# import os
 
 def build_graph(words):
     buckets = defaultdict(list)
@@ -28,7 +26,20 @@ def get_words(vocabulary_file):
             yield line[:-1]
 
 
-g = build_graph(get_words('words_shorter.txt'))
+def traverse(graph, starting_vertex):
+    visited = set()
+    queue = deque([[starting_vertex]])
+    while(queue):
+        path = queue.popleft()
+        vertex = path[-1]
+        yield vertex, path
+        for neighbour in graph[vertex] - visited:
+            visited.add(neighbour)
+            queue.append(path + [neighbour])
 
-for key, val in g.items():
-    print(key, val)
+
+word_graph = build_graph(get_words('words_shorter.txt'))
+for k, v in word_graph.items():
+    print('{} -> {}'.format(k, v))
+
+print('pope: ', word_graph['pope'])
