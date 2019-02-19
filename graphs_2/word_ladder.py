@@ -42,4 +42,6 @@ word_graph = build_graph(get_words('words_shorter.txt'))
 for k, v in word_graph.items():
     print('{} -> {}'.format(k, v))
 
-print('pope: ', word_graph['pope'])
+for vertex, path in traverse(word_graph, 'fool'):
+    if vertex == 'sage':
+        print(' -> '.join(path))
